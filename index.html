@@ -4,9 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="main.css">
+    <script src="character.js" defer></script>
     <title>RPG Game</title>
 </head>
 <body>
-    
+    <div class="main">
+    <div class="partL">
+        <div class = "players">
+            <form>
+                <input type="text" class = "input1">
+                <select name="items" id="items1" class="select">
+                    <option value="boots">Boots</option>
+                    <option value="staff">Staff</option>
+                    <option value="sword">Sword</option>
+                    <option value="bow">Bow</option>
+                </select>
+                <select name="race" id="races1" class="select">
+                    <option value="humans">Humans</option>
+                    <option value="orcs">Orcs</option>
+                    <option value="elves">Elves</option>
+                    <option value="vampires">Vampires</option>
+                </select>
+
+                <input type="text" class = "input2">
+                <select name="items" id="items2" class="select">
+                    <option value="boots">Boots</option>
+                    <option value="staff">Staff</option>
+                    <option value="sword">Sword</option>
+                    <option value="bow">Bow</option>
+                </select>
+                <select name="race" id="races2" class="select">
+                    <option value="humans">Humans</option>
+                    <option value="orcs">Orcs</option>
+                    <option value="elves">Elves</option>
+                    <option value="vampires">Vampires</option>
+                </select>
+            </form>
+        </div>
+        <div class = "stats">
+            <div class = "stats1">
+                <ul style="list-style-type:none;">
+                    <li id = "info11"></li>
+                    <li id = "info12"></li>
+                    <li id = "info13"></li>
+                </ul>
+            </div>
+            <div class= "stats2">
+                <ul style="list-style-type:none;">
+                    <li id = "info21"></li>
+                    <li id = "info22"></li>
+                    <li id = "info23"></li>
+                </ul>
+            </div>
+        </div>
+        <div class = "sixBtn">
+            <div class= "threeBtn1">
+                <button type = "button" id="hit1">Hit</button>
+                <button type = "button" id="heal1">Heal</button>
+                <button type = "button" id="yield1">Yield</button>
+            </div>
+            <div class= "threeBtn2">
+                <button type = "button" id="hit2">Hit</button>
+                <button type = "button" id="heal2">Heal</button>
+                <button type = "button" id="yield2">Yield</button>
+            </div>
+        </div>
+        <div class="healthBars">
+            <progress id="health1" value="100" max="100"></progress>
+            <progress id="health2" value="100" max="100"></progress>
+        </div>
+        <div class = "twoBtns">
+            <button type = "button" class = "createBtn">Create</button>
+            <button type = "button" class = "playBtn">Play</button>
+        </div>
+        <p class="createInfo"></p>
+    </div>
+    <div class = "partR">  
+        <p class = "log">
+            <ul style="list-style-type:none;" id="logList">
+            </ul>
+        </p>
+    </div>
+    </div>
 </body>
 </html>

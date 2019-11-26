@@ -1,0 +1,86 @@
+.main{
+    display:flex;
+    flex-direction: row;
+}
+
+.stats,.sixBtn{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.twoBtns{
+    display:flex;
+    flex-direction: column;
+    margin-left: 20rem;
+}
+
+.threeBtn1{
+    margin-left: 3rem;
+}
+
+.threeBtn2{
+    margin-left: 7rem;
+}
+
+#hit1,#heal1,#yield1{
+    margin: 1rem 5px;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: darkblue;
+    color: white;   
+    font-size: 1rem;
+}
+
+#hit2,#heal2,#yield2{
+    margin: 1rem 5px;
+    width: 5rem;
+    height: 2rem;
+    border-radius: 10px;
+    background-color: darkblue;
+    color: white;
+    font-size: 1rem;
+}
+
+.stats1,.stats2{
+    width: 20rem;
+    height: 20rem;
+    background-color: darkblue;
+    margin: 1rem 2rem;
+    color: white;
+    font-weight: bold;
+}
+
+#health1,#health2 {
+    width: 20rem;
+    height: 1rem;
+    margin: 1rem 2rem;
+}
+
+.createBtn,.playBtn{
+    margin: 1rem;
+    width: 5rem;
+    height: 2rem;
+}
+
+form{
+    display:flex;
+    flex-direction: row;
+}
+
+.input1{
+    height: 2rem;
+    margin-left: 2rem;
+}
+
+.input2{
+    height: 2rem;
+    margin-left: 4rem;
+}
+
+.log{
+    width: 20rem;
+    height: 30rem;
+    background-color: lightblue;
+}
