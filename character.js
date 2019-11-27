@@ -60,6 +60,8 @@ let heal2 = document.getElementById("heal2");
 let yield2 = document.getElementById("yield2");
 let player1;
 let player2;
+let player1score = 0;
+let player2score = 0;
 
 
 sixBtn.style.display = "none";
@@ -164,7 +166,7 @@ function items(player,randomD,randomH){
             let r = Math.random();
             if (r>0.3) {
                 player1.currenthealth -= randomD;
-                console.log("p2-boots: 30% chance to dodge an attack: " + randomD + "chance: " + r);
+                console.log("p1-boots: 30% chance to dodge an attack: " + randomD + "chance: " + r);
             } else {
                 console.log("p1-boots: 30% chance to dodge an attack: " + r)
             }
@@ -194,10 +196,10 @@ function items(player,randomD,randomH){
                 console.log("p2-boots: 30% chance to dodge an attack: " + r)
             }
         } else if (player2.item == "staff") {
-            player1.currenthealth += randomH * 1.2;
+            player2.currenthealth += randomH * 1.2;
             console.log("p2-staff:20% increase in healing +randomH: " + randomH)
         } else if (player2.item == "sword") {
-            player2.currenthealth -= randomD * 1.3;
+            player1.currenthealth -= randomD * 1.3;
             console.log("p2-sword: 30% more damage: " + randomD)
         } else {
             let r = Math.random();
@@ -212,33 +214,55 @@ function items(player,randomD,randomH){
     }
 }
 
-hit1.addEventListener("click",function(){
-    //if (player2.item == "boots") 
+hit1.addEventListener("click",function(){ 
     let li = document.createElement("li");
     logList.appendChild(li);
     li.innerHTML = "player1 chooses HIT"; 
     let dmg = player1.damage();  
-    raceRun("player1", dmg);
-    raceRun("player2", dmg);
     items("player1", dmg, 0);
     items("player2", dmg, 0);
+    raceRun("player1", dmg);
+    raceRun("player2", dmg);
     health1.value = player1.currenthealth;
     health2.value = player2.currenthealth;
-    console.log("p2-currenthealth: " + player2.currenthealth)
     console.log("p1-currenthealth: " + player1.currenthealth)
-
+    console.log("p2-currenthealth: " + player2.currenthealth)
 });
 
 hit2.addEventListener("click",function(){
     let li = document.createElement("li");
     logList.appendChild(li);
     li.innerHTML = "player2 chooses HIT";
+    let dmg = player2.damage();      
+    items("player2", dmg, 0);
+    //items("player1", dmg, 0);
+    raceRun("player2", dmg);
+    raceRun("player1", dmg);
+    health2.value = player2.currenthealth;
+    health1.value = player1.currenthealth;
+    console.log("p1-currenthealth: " + player1.currenthealth)
+    console.log("p2-currenthealth: " + player2.currenthealth)
 });
 
 heal1.addEventListener("click",function(){
     let li = document.createElement("li");
     logList.appendChild(li);
     li.innerHTML = "player1 chooses HEAL";
+    let hl = player1.heal();    
+    console.log("randomheal :" + hl) 
+    if (player1.item == "staff"){
+        items("player1", 0, hl);
+    } else {
+        player1.currenthealth = player1.currenthealth + hl;
+    }
+    if (player1.currenthealth > player1.maxHealth){
+        console.log("player1.currenthealth: " + player1.currenthealth);
+        player1.currenthealth = player1.maxHealth;
+    }
+    health1.value = player1.currenthealth;
+    health2.value = player2.currenthealth;
+    console.log("p2-currenthealth: " + player2.currenthealth)
+    console.log("p1-currenthealth: " + player1.currenthealth)
 });
 
 heal2.addEventListener("click",function(){
@@ -246,6 +270,21 @@ heal2.addEventListener("click",function(){
     let li = document.createElement("li");
     logList.appendChild(li);
     li.innerHTML = "player2 chooses HEAL";
+    let hl = player2.heal();     
+    console.log("randomheal :" + hl)
+    if (player2.item == "staff") {
+        items("player2", 0, hl);
+    } else {
+        player2.currenthealth = player2.currenthealth + hl;
+    }   
+    if (player2.currenthealth > player2.maxHealth){
+        console.log("player1.currenthealth: " + player2.currenthealth);
+        player2.currenthealth = player2.maxHealth;
+    }
+    health2.value = player2.currenthealth;
+    health1.value = player1.currenthealth;
+    console.log("p2-currenthealth: " + player1.currenthealth)
+    console.log("p1-currenthealth: " + player2.currenthealth)
 });
 
 yield1.addEventListener("click",function(){
