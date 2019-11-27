@@ -48,7 +48,6 @@ let createInfo = document.querySelector(".createInfo");
 let stats1 = document.querySelector(".stats1");
 let stats2 = document.querySelector(".stats2");
 let createBtn = document.querySelector(".createBtn");
-let playBtn = document.querySelector(".playBtn");
 let sixBtn = document.querySelector(".sixBtn");
 let healthBars = document.querySelector(".healthBars");
 let health1 = document.querySelector("#health1");
@@ -137,6 +136,8 @@ function raceRun(player,randomD){
                 player2.currenthealth -= randomD * 0.5;
                 player1.currenthealth -= randomD * 0.5;
                 console.log("p1-elves+randomD: " + randomD + "chance: "+ r)
+            } else {
+                console.log("p1-elves+randomD: " + randomD + "chance: "+ r)
             }
         } 
     } else {
@@ -148,6 +149,8 @@ function raceRun(player,randomD){
             if (r<=0.3) {
                 player1.currenthealth -= randomD * 0.5;
                 player2.currenthealth -= randomD * 0.5;
+                console.log("p2-elves+randomD: " + randomD + "chance: "+ r)
+            } else {
                 console.log("p2-elves+randomD: " + randomD + "chance: "+ r)
             }
         }
@@ -161,9 +164,9 @@ function items(player,randomD,randomH){
             let r = Math.random();
             if (r>0.3) {
                 player1.currenthealth -= randomD;
-                console.log("p1-boots: 30% chance to dodge an attack" + r)
+                console.log("p2-boots: 30% chance to dodge an attack: " + randomD + "chance: " + r);
             } else {
-                console.log("p1-boots: 30% chance to dodge an attack" + r)
+                console.log("p1-boots: 30% chance to dodge an attack: " + r)
             }
         } else if (player1.item == "staff") {  //20% increase in healing
             player1.currenthealth += randomH * 1.2;
@@ -175,20 +178,20 @@ function items(player,randomD,randomH){
             let r = Math.random();
             if (r<0.3) { //30% chance to attack twice
                 player2.currenthealth -= randomD * 2;
-                console.log("p1-bow:30% chance to attack twice: " + randomD + " Chance " + r);
+                console.log("p1-bow:30% chance to attack twice: " + randomD + " Chance: " + r);
             } else {
                 player2.currenthealth -= randomD;
-                console.log("p1-bow:30% chance to attack twice: " + randomD + " Chance " + r);
+                console.log("p1-bow:30% chance to attack twice: " + randomD + " Chance: " + r);
             }
         }
     } else {
         if(player2.item == "boots"){ 
             let r = Math.random();
             if (r > 0.3) {
-                player1.currenthealth -= randomD;
-                console.log("p2-boots: 30% chance to dodge an attack" + r)
+                player2.currenthealth -= randomD;
+                console.log("p2-boots: 30% chance to dodge an attack: " + randomD + "chance: " + r);
             } else {
-                console.log("p1-boots: 30% chance to dodge an attack" + r)
+                console.log("p2-boots: 30% chance to dodge an attack: " + r)
             }
         } else if (player2.item == "staff") {
             player1.currenthealth += randomH * 1.2;
@@ -200,10 +203,10 @@ function items(player,randomD,randomH){
             let r = Math.random();
             if (r < 0.3) {
                 player1.currenthealth -= randomD * 2;
-                console.log("p2-bow:30% chance to attack twice: " + randomD + " Chance " + r);
+                console.log("p2-bow:30% chance to attack twice: " + randomD + " Chance: " + r);
             } else {
                 player1.currenthealth -= randomD;
-                console.log("p2-bow:30% chance to attack twice: " + randomD + " Chance " + r)
+                console.log("p2-bow:30% chance to attack twice: " + randomD + " Chance: " + r)
             }
         }
     }
@@ -213,11 +216,16 @@ hit1.addEventListener("click",function(){
     //if (player2.item == "boots") 
     let li = document.createElement("li");
     logList.appendChild(li);
-    li.innerHTML = "player1 chooses HIT";   
-    raceRun("player1", player1.damage())
-    items("player1", player1.damage(), 0);
+    li.innerHTML = "player1 chooses HIT"; 
+    let dmg = player1.damage();  
+    raceRun("player1", dmg);
+    raceRun("player2", dmg);
+    items("player1", dmg, 0);
+    items("player2", dmg, 0);
+    health1.value = player1.currenthealth;
     health2.value = player2.currenthealth;
     console.log("p2-currenthealth: " + player2.currenthealth)
+    console.log("p1-currenthealth: " + player1.currenthealth)
 
 });
 
