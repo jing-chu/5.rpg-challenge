@@ -248,6 +248,8 @@ function itemHit(dmgA, dmgB, itmA, itmB) {
         if (r<=0.3){
             console.log("dmgA+dmgB: " + dmgA + " + " + dmgB  + " r: " + r);
             return [dmgA, dmgB*2];
+        } else {
+            return [dmgA, dmgB];
         }
     } else { //boots and staff
         console.log("dmgA+dmgB: " + dmgA + " + " + dmgB );
@@ -366,7 +368,7 @@ hit1.addEventListener("click",function(){
     li.innerHTML = "player1 HIT: " + player1.displayChar();
 
     logList.appendChild(li); 
-    [ply1Dmg, ply2Dmg]=itemHit(0, ply2Dmg, player1.item, player2.item);
+    [ply1Dmg, ply2Dmg]=itemHit(0., ply2Dmg, player1.item, player2.item);
     [ply1Dmg, ply2Dmg]=raceHit(ply1Dmg, ply2Dmg, player2.race);
     player1.currenthealth = player1.currenthealth-ply1Dmg;
     player2.currenthealth = player2.currenthealth-ply2Dmg;
