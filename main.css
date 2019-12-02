@@ -1,6 +1,6 @@
 .main{
     display:flex;
-    flex-direction: row;
+    flex-direction: column;
 }
 
 .stats,.sixBtn{
@@ -88,9 +88,10 @@ form{
 }
 
 .log{
-    width: 20rem;
-    height: 30rem;
+    width: 50rem;
+    height: 10rem;
     background-color: lightblue;
+    overflow: scroll;
 }
 
 progress {

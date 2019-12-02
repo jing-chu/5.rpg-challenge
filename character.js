@@ -14,25 +14,19 @@ function Person(name,race,item){
     this.heal = function(){
         let randomH = getRndInteger(this.min, this.maxHealing);
         return randomH;        
-       // this.currenthealth += heal; 
-        //if( this.currenthealth >= this.maxHealth) {
-            //this.currenthealth = 100;
-        //}  
+         
     };
 
     this.damage = function(){
         let randomD= getRndInteger(this.min, this.maxDamage);  
         return randomD;
-        //this.currenthealth -= damage;
-        //if (this.currenthealth <=0) {
-            //alert("game over");//gameOver();
-        //}
+        
     };
 
     this.totalDamage = this.damage();
 
     this.displayChar = function(){
-        return console.log(`I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.maxHealth}`);
+        return `I am a ${this.race}, I wield a ${this.item}, my total health point are ${this.maxHealth}, my current health point are ${this.currenthealth}`;
     };
 }
 
@@ -263,6 +257,7 @@ function itemHit(dmgA, dmgB, itmA, itmB) {
 
 function itemHeal(healA, itmA){
     if (itmA == "staff"){
+        console.log("healA: " + healA)
         return healA *1.2;
     } else {
         return healA;
@@ -365,10 +360,11 @@ function items(player,randomD1,randomD2,randomH1,randomH2){
 hit1.addEventListener("click",function(){ 
     let ply2Dmg = player2.damage(); 
     let ply1Dmg = 0;  
-    heal1.disabled = true; 
-    hit1.disabled = true; 
+    heal2.disabled = false; 
+    hit2.disabled = false; 
     let li = document.createElement("li");    
-    li.innerHTML = "player1 chooses HIT";
+    li.innerHTML = "player1 HIT: " + player1.displayChar();
+
     logList.appendChild(li); 
     [ply1Dmg, ply2Dmg]=itemHit(0, ply2Dmg, player1.item, player2.item);
     [ply1Dmg, ply2Dmg]=raceHit(ply1Dmg, ply2Dmg, player2.race);
@@ -409,15 +405,19 @@ hit1.addEventListener("click",function(){
             lij.id = "info2" + String(j);
         }        
     }
+    heal1.disabled = true; 
+    hit1.disabled = true; 
 });
 
 hit2.addEventListener("click",function(){
     let ply1Dmg = player1.damage(); 
     let ply2Dmg = 0;  
+    heal1.disabled = false; 
+    hit1.disabled = false; 
     heal2.disabled = true;  
     hit2.disabled = true;
     let li = document.createElement("li");
-    li.innerHTML = "player2 chooses HIT";
+    li.innerHTML = "player2 HIT: " + player2.displayChar();
     logList.appendChild(li); 
     [ply2Dmg, ply1Dmg]=itemHit(0, ply1Dmg, player2.item, player1.item);
     [ply2Dmg, ply1Dmg]=raceHit(ply2Dmg, ply1Dmg, player1.race);
@@ -459,55 +459,55 @@ hit2.addEventListener("click",function(){
             lij.id = "info2" + String(j);
         }        
     }
+    
 });
 
-heal1.addEventListener("click",function(){
+heal1.addEventListener("click",function(){ 
+    heal2.disabled = false; 
+    hit2.disabled = false;  
     let li = document.createElement("li");
-    li.innerHTML = "player1 chooses HEAL";
+    li.innerHTML = "player1 HEAL: " + player1.displayChar();
     logList.appendChild(li);
-    let hl = player1.heal();    
-    console.log("randomheal :" + hl) 
-    if (player1.item == "staff"){
-        items("player1", 0, hl);
-    } else {
-        player1.currenthealth = player1.currenthealth + hl;
-    }
+    let hl = player1.heal();
+    hl = itemHeal (hl, player1.item);
+    console.log("hl:" + hl);
+    player1.currenthealth = player1.currenthealth + hl;
     if (player1.currenthealth > player1.maxHealth){
         console.log("player1.currenthealth: " + player1.currenthealth);
         player1.currenthealth = player1.maxHealth;
     }
     health1.value = player1.currenthealth;
-    health2.value = player2.currenthealth;
-    console.log("p2-currenthealth: " + player2.currenthealth)
-    console.log("p1-currenthealth: " + player1.currenthealth)
+    console.log("p1currenthealth: " + player1.currenthealth);
+    console.log("p2currenthealth: " + player2.currenthealth);
+    heal1.disabled = true; 
+    hit1.disabled = true;
 });
 
 heal2.addEventListener("click",function(){
-    player2.heal();
+    heal1.disabled = false; 
+    hit1.disabled = false;  
     let li = document.createElement("li");    
-    li.innerHTML = "player2 chooses HEAL";
+    li.innerHTML = "player2 HEAL: " + player2.displayChar();
     logList.appendChild(li);
     let hl = player2.heal();     
-    console.log("randomheal :" + hl)
-    if (player2.item == "staff") {
-        items("player2", 0, hl);
-    } else {
-        player2.currenthealth = player2.currenthealth + hl;
-    }   
+    hl = itemHeal (hl, player2.item);
+    console.log("hl:" + hl);
+    player2.currenthealth = player2.currenthealth + hl;
     if (player2.currenthealth > player2.maxHealth){
-        console.log("player1.currenthealth: " + player2.currenthealth);
+        console.log("player2.currenthealth: " + player2.currenthealth);
         player2.currenthealth = player2.maxHealth;
     }
     health2.value = player2.currenthealth;
-    health1.value = player1.currenthealth;
-    console.log("p2-currenthealth: " + player1.currenthealth)
-    console.log("p1-currenthealth: " + player2.currenthealth)
+    console.log("p1currenthealth: " + player1.currenthealth);
+    console.log("p2currenthealth: " + player2.currenthealth);
+    heal2.disabled = true; 
+    hit2.disabled = true;
 });
 
 yield1.addEventListener("click",function(){
     alert("game over");//gameOver();
     let li = document.createElement("li"); 
-    log.innerHTML = "player1 chooses YIELD";
+    log.innerHTML = "player1 YIELD";
     logList.appendChild(li);
 
     sixBtn.style.display = "none";
@@ -543,7 +543,7 @@ yield1.addEventListener("click",function(){
 yield2.addEventListener("click",function(){
     alert("game over");//gameOver();
     let li = document.createElement("li"); 
-    log.innerHTML = "player2 chooses YIELD";
+    log.innerHTML = "player2 YIELD";
     logList.appendChild(li);
     sixBtn.style.display = "none";
     log.style.display = "none";
