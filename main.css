@@ -23,7 +23,7 @@
     margin-left: 7rem;
 }
 
-#hit1,#heal1,#yield1{
+#hit1,#heal1,#yield1,.createBtn{
     margin: 1rem 5px;
     width: 5rem;
     height: 2rem;
@@ -46,16 +46,24 @@
 .stats1,.stats2{
     width: 20rem;
     height: 20rem;
-    background-color: darkblue;
     margin: 1rem 2rem;
-    color: white;
+    
+    color: #f65e1c;
     font-weight: bold;
+    font-size: 2rem;
+    
 }
 
 #health1,#health2 {
     width: 20rem;
     height: 1rem;
     margin: 1rem 2rem;
+}
+
+img {
+    width:6rem;
+    height:6rem;
+    margin-top: 1rem;  
 }
 
 .createBtn{

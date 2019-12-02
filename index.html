@@ -14,47 +14,52 @@
         <div class = "players">
             <form>
                 <input type="text" class = "input1">
-                <select name="items" id="items1" class="select">
-                    <option value="boots">Boots</option>
-                    <option value="staff">Staff</option>
-                    <option value="sword">Sword</option>
-                    <option value="bow">Bow</option>
-                </select>
                 <select name="race" id="races1" class="select">
                     <option value="humans">Humans</option>
                     <option value="orcs">Orcs</option>
                     <option value="elves">Elves</option>
                     <option value="vampires">Vampires</option>
                 </select>
-
-                <input type="text" class = "input2">
-                <select name="items" id="items2" class="select">
+                <select name="items" id="items1" class="select">
                     <option value="boots">Boots</option>
                     <option value="staff">Staff</option>
                     <option value="sword">Sword</option>
                     <option value="bow">Bow</option>
                 </select>
+
+                <input type="text" class = "input2">
                 <select name="race" id="races2" class="select">
                     <option value="humans">Humans</option>
                     <option value="orcs">Orcs</option>
                     <option value="elves">Elves</option>
                     <option value="vampires">Vampires</option>
                 </select>
+                <select name="items" id="items2" class="select">
+                    <option value="boots">Boots</option>
+                    <option value="staff">Staff</option>
+                    <option value="sword">Sword</option>
+                    <option value="bow">Bow</option>
+                </select>
             </form>
+        </div>
+        <div class = "twoBtns">
+            <button type = "button" class = "createBtn">Create</button>
         </div>
         <div class = "stats">
             <div class = "stats1">
-                <ul style="list-style-type:none;">
+                <ul style="list-style-type:none;" id = "info1">
                     <li id = "info11"></li>
                     <li id = "info12"></li>
                     <li id = "info13"></li>
+                    <li id = "info14"></li>
                 </ul>
             </div>
             <div class= "stats2">
-                <ul style="list-style-type:none;">
+                <ul style="list-style-type:none;" id="info2">
                     <li id = "info21"></li>
                     <li id = "info22"></li>
                     <li id = "info23"></li>
+                    <li id = "info24"></li>
                 </ul>
             </div>
         </div>
@@ -74,9 +79,7 @@
             <progress id="health1" ></progress>
             <progress id="health2" ></progress>
         </div>
-        <div class = "twoBtns">
-            <button type = "button" class = "createBtn">Create</button>
-        </div>
+        
         <p class="createInfo"></p>
     </div>
     <div class = "partR">  
