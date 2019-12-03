@@ -368,7 +368,7 @@ hit1.addEventListener("click",function(){
     li.innerHTML = "player1 HIT: " + player1.displayChar();
 
     logList.appendChild(li); 
-    [ply1Dmg, ply2Dmg]=itemHit(0., ply2Dmg, player1.item, player2.item);
+    [ply1Dmg, ply2Dmg]=itemHit(0, ply2Dmg, player1.item, player2.item);
     [ply1Dmg, ply2Dmg]=raceHit(ply1Dmg, ply2Dmg, player2.race);
     player1.currenthealth = player1.currenthealth-ply1Dmg;
     player2.currenthealth = player2.currenthealth-ply2Dmg;
